@@ -1,0 +1,28 @@
+{
+  "name": "plantuml-platform",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "pinia": "^2.1.7",
+    "vue": "^3.4.21"
+  },
+  "devDependencies": {
+    "@unocss/preset-attributify": "^0.58.5",
+    "@unocss/preset-uno": "^0.58.5",
+    "@vitejs/plugin-vue": "^5.0.4",
+    "naive-ui": "^2.38.1",
+    "typescript": "^5.2.2",
+    "unocss": "^0.58.5",
+    "unplugin-auto-import": "^0.17.5",
+    "unplugin-vue-components": "^0.26.0",
+    "vfonts": "^0.0.3",
+    "vite": "^5.1.6",
+    "vue-tsc": "^1.8.27"
+  }
+}
