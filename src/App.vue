@@ -5,10 +5,12 @@ import ImageOutput from "@/components/PlantUML/image-output.vue";
 import Header from "@/components/header/index.vue";
 
 import {useConfigsStore, useCodeStore} from '@/store';
+import {ref} from "vue";
 
 const configs = useConfigsStore();
 const store = useCodeStore();
 
+const split = ref(0.4);
 </script>
 
 <template>
@@ -17,8 +19,8 @@ const store = useCodeStore();
       <n-layout-header :bordered="true">
         <Header/>
       </n-layout-header>
-      <n-layout-content class="box-border p-1rem" content-style="width: 100%; height: 680px;">
-        <n-split :direction="configs.direction" :max="0.75" :min="0.25" class="h-full w-full">
+      <n-layout-content class="box-border p-1rem" content-style="width: 100%; height: 85vh;">
+        <n-split v-model:size="split" :direction="configs.direction" :max="0.75" :min="0.25" class="h-full w-full">
           <template #1>
             <n-skeleton class="w-full h-full" v-if="store.loading"/>
             <CodeInput class="w-full h-full" v-show="!store.loading"/>
@@ -27,9 +29,11 @@ const store = useCodeStore();
             <div class="w-full h-600px mx-auto my-auto box-border p-10" v-if="store.loading">
               <n-skeleton w-full h-full/>
             </div>
-            <ImageOutput
-              :class="{'w-full': configs.direction === 'horizontal','h-full': configs.direction === 'vertical'}"
-              class="flex justify-center items-center" v-if="!store.loading"/>
+            <div class="w-full  mt-1rem h-full mx-auto" v-if="!store.loading">
+              <ImageOutput
+                :class="{'w-full': configs.direction === 'horizontal','h-full': configs.direction === 'vertical'}"
+                class="flex justify-center items-center" />
+            </div>
           </template>
         </n-split>
       </n-layout-content>

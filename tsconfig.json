@@ -24,7 +24,13 @@
     "types": [
       "naive-ui/volar"
     ],
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    // alias
+    "paths": {
+      "@/*": [
+        "src/*"
+      ]
+    }
   },
   "include": [
     "src/**/*.ts",
@@ -35,11 +41,5 @@
     {
       "path": "./tsconfig.node.json"
     }
-  ],
-  // alias
-  "paths": {
-    "@/*": [
-      "src/*"
-    ]
-  }
+  ]
 }

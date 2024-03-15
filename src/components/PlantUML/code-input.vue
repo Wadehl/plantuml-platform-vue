@@ -31,7 +31,7 @@ onMounted(() => {
   store.setLoading(true);
 })
 
-function ready(_e: unknown, monaco: any) {
+function ready(_e: unknown, _monaco: any) {
   $loadingBar.finish();
   store.setLoading(false);
   $message.success('代码编辑器加载完成');
