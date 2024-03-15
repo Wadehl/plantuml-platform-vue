@@ -1,4 +1,4 @@
-import { createApp } from 'vue'
+import {createApp} from 'vue'
 import './style.css'
 import App from './App.vue'
 import 'virtual:uno.css'
@@ -6,8 +6,22 @@ import 'virtual:uno.css'
 import pinia from './store'
 
 // 通用字体
-import 'vfonts/Lato.css'
+import 'vfonts/Roboto.css'
 // 等宽字体
 import 'vfonts/FiraCode.css'
 
-createApp(App).use(pinia).mount('#app')
+// monaco-vue
+import {install as VueMonacoEditorPlugin} from '@guolao/vue-monaco-editor'
+
+// 公共组件
+import AppProvider from '@/components/AppProvider/index.vue';
+
+createApp(App)
+  .component('AppProvider', AppProvider)
+  .use(pinia)
+  .use(VueMonacoEditorPlugin, {
+    paths: {
+      vs: 'https://cdn.bootcdn.net/ajax/libs/monaco-editor/0.43.0/min/vs'
+    }
+  })
+  .mount('#app')
