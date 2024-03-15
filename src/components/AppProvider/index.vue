@@ -14,7 +14,7 @@
   </n-config-provider>
 </template>
 
-<script setup>
+<script lang="ts" setup>
 import {defineComponent, h} from 'vue'
 import {useLoadingBar, useDialog, useMessage, useNotification} from 'naive-ui';
 import {useConfigsStore} from '@/store';
