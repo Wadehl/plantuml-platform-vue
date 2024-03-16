@@ -14,25 +14,25 @@ const split = ref(0.4);
 </script>
 
 <template>
-  <AppProvider class="box-border py-0.5rem w-100vw h-100vh">
+  <AppProvider class="box-border py-0.5rem w-100vw h-100vh overflow-x-hidden">
     <n-layout :native-scrollbar="false">
       <n-layout-header :bordered="true">
         <Header/>
       </n-layout-header>
-      <n-layout-content class="box-border p-1rem" content-style="width: 100%; height: 90vh">
+      <n-layout-content class="box-border p-1rem" content-style="width: 100%; min-height: 600px">
         <n-split v-model:size="split" :direction="configs.direction" :max="0.75" :min="0.25" class="h-full w-full">
           <template #1>
             <n-skeleton class="w-full h-full" v-if="store.loading"/>
             <CodeInput class="w-full h-full" v-show="!store.loading"/>
           </template>
           <template #2>
-            <div class="w-full h-600px mx-auto my-auto box-border p-10" v-if="store.loading">
-              <n-skeleton w-full h-full/>
+            <div class="w-full mx-auto my-auto box-border p-10" v-if="store.loading">
+              <n-skeleton w-full h-full style="min-height: 600px"/>
             </div>
-            <div class="w-full  mt-1rem h-full mx-auto relative" v-if="!store.loading">
+            <div class="w-full mt-1rem h-full mx-auto relative overflow-auto" v-if="!store.loading">
               <ImageOutput
                 :class="{'w-full': configs.direction === 'horizontal','h-full': configs.direction === 'vertical'}"
-                class="flex justify-center items-center" />
+                class="flex justify-center items-center"/>
             </div>
           </template>
         </n-split>

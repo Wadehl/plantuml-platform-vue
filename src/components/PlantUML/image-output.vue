@@ -22,12 +22,22 @@ const downloadPng = async () => {
     const svgString = await res.text();
     // 将svg转换为canvas
     const canvas = document.createElement('canvas');
-    const ctx = canvas.getContext('2d');
+    const ctx: any = canvas.getContext('2d');
     const img = new Image();
     img.src = `data:image/svg+xml;base64,${btoa(svgString)}`;
 
     img.onload = function () {
-      const expectWidth = 800;
+      const expectWidth = configs.baseWidth;
+      const expectHeight = configs.baseHeight;
+
+      if (expectHeight && !configs.isObjectFit) {
+        canvas.width = expectWidth;
+        canvas.height = expectHeight;
+        ctx.drawImage(img, 0, 0, expectWidth, expectHeight);
+        const pngData = canvas.toDataURL('image/png');
+        downloadFile(pngData, 'plantuml.png');
+        return;
+      }
       const rate = img.width / expectWidth;
       if (rate < 1) {
         canvas.width = expectWidth;
@@ -100,19 +110,19 @@ const handleSelect = async (key: string | number) => {
 
 <template>
   <div class="absolute top-0 right-0">
-    <n-space class="m-5">
+    <n-space class="m-1">
       <n-popselect v-model:value="configs.output" :options="options" trigger="click">
-        <n-button>{{ configs.output || '弹出选择' }}</n-button>
+        <n-button type="primary">{{ configs.output || '弹出选择' }}</n-button>
       </n-popselect>
       <n-dropdown trigger="hover" :options="download_options" @select="handleSelect">
-        <n-button :loading="download_loading">下载图片</n-button>
+        <n-button type="primary" :loading="download_loading">下载图片</n-button>
       </n-dropdown>
     </n-space>
   </div>
 
-  <n-image object-fit="contain" :src="store.svgUrl" alt="svg" class="w-full flex justify-center" width="80%"
-           v-if="store.svgUrl" :show-toolbar="true"
-           :previewed-img-props="{ style: { objectFit: 'cover' } }"/>
+  <n-image object-fit="contain" :src="store.svgUrl" alt="svg" class="w-full flex justify-center pt-12" width="90%"
+           height="100%"
+           v-if="store.svgUrl" :show-toolbar="true"/>
 </template>
 
 <style scoped>
