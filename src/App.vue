@@ -14,12 +14,12 @@ const split = ref(0.4);
 </script>
 
 <template>
-  <AppProvider class="box-border py-0.5rem w-100vw h-100vh overflow-hidden">
+  <AppProvider class="box-border py-0.5rem w-100vw h-100vh">
     <n-layout :native-scrollbar="false">
       <n-layout-header :bordered="true">
         <Header/>
       </n-layout-header>
-      <n-layout-content class="box-border p-1rem" content-style="width: 100%; height: 85vh;">
+      <n-layout-content class="box-border p-1rem" content-style="width: 100%; height: 90vh">
         <n-split v-model:size="split" :direction="configs.direction" :max="0.75" :min="0.25" class="h-full w-full">
           <template #1>
             <n-skeleton class="w-full h-full" v-if="store.loading"/>

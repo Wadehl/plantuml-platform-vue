@@ -111,7 +111,8 @@ const handleSelect = async (key: string | number) => {
   </div>
 
   <n-image object-fit="contain" :src="store.svgUrl" alt="svg" class="w-full flex justify-center" width="80%"
-           v-if="store.svgUrl" :preview-disabled="true"/>
+           v-if="store.svgUrl" :show-toolbar="true"
+           :previewed-img-props="{ style: { objectFit: 'cover' } }"/>
 </template>
 
 <style scoped>
