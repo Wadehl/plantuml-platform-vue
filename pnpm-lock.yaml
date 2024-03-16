@@ -11,9 +11,6 @@ dependencies:
   '@sinm/monaco-plantuml':
     specifier: ^0.5.6
     version: 0.5.6(karma@6.4.3)
-  canvas-to-png:
-    specifier: ^0.0.3
-    version: 0.0.3
   lodash-es:
     specifier: ^4.17.21
     version: 4.17.21
@@ -1379,10 +1376,6 @@ packages:
   /caniuse-lite@1.0.30001597:
     resolution: {integrity: sha512-7LjJvmQU6Sj7bL0j5b5WY/3n7utXUJvAe1lxhsHDbLmwX9mdL86Yjtr+5SRCyf8qME4M7pU2hswj0FpyBVCv9w==}
     dev: true
-
-  /canvas-to-png@0.0.3:
-    resolution: {integrity: sha512-c+BPzyRQMbuz3mr2byFPcQqnM/D/iG/sSehUyxNUJ4wFDq3SS3d/KhkA07jtTx1u1WK/a2E3NYAT603yd7oAvA==}
-    dev: false
 
   /chalk@2.4.2:
     resolution: {integrity: sha512-Mti+f9lpJNcwF4tWV8/OrTTtF1gZi+f8FqlyAdouralcFWFQWF2+NgCHShjkCb+IFBLq9buZwE1xckQU4peSuQ==}
