@@ -29,7 +29,7 @@ const split = ref(0.4);
             <div class="w-full h-600px mx-auto my-auto box-border p-10" v-if="store.loading">
               <n-skeleton w-full h-full/>
             </div>
-            <div class="w-full  mt-1rem h-full mx-auto" v-if="!store.loading">
+            <div class="w-full  mt-1rem h-full mx-auto relative" v-if="!store.loading">
               <ImageOutput
                 :class="{'w-full': configs.direction === 'horizontal','h-full': configs.direction === 'vertical'}"
                 class="flex justify-center items-center" />
