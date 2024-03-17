@@ -4,22 +4,40 @@ import ImageOutput from "@/components/PlantUML/image-output.vue";
 
 import Header from "@/components/header/index.vue";
 
+// hooks
+import {useFullscreen} from '@vueuse/core';
+
 import {useConfigsStore, useCodeStore} from '@/store';
-import {ref} from "vue";
+import {ref, onMounted} from "vue";
+import {useMediaQuery} from "@vueuse/core";
 
 const configs = useConfigsStore();
 const store = useCodeStore();
 
 const split = ref(0.4);
+
+onMounted(() => {
+  const isLargeScreen = useMediaQuery('(min-width: 1024px)')
+  if (!isLargeScreen.value) {
+    split.value = 0.3;
+    configs.direction = 'vertical';
+  } else {
+    configs.direction = 'horizontal';
+  }
+});
+
+const contentRef = ref<HTMLElement | null>(null);
+
+const {isFullscreen, toggle} = useFullscreen(contentRef);
 </script>
 
 <template>
   <AppProvider class="box-border overflow-x-hidden">
     <n-layout :native-scrollbar="false">
       <n-layout-header :bordered="true" class="h-5vh">
-        <Header/>
+        <Header @toggle="toggle" v-model:is-full-screen="isFullscreen"/>
       </n-layout-header>
-      <n-layout-content class="box-border p-1rem h-95vh" content-style="width: 100%; ">
+      <n-layout-content class="box-border p-1rem h-95vh" content-style="width: 100%; " ref="contentRef">
         <n-split v-model:size="split" :direction="configs.direction" :max="0.75" :min="0.25" class="h-full w-full">
           <template #1>
             <n-skeleton class="w-full h-full" v-if="store.loading"/>

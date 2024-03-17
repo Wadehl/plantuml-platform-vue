@@ -13,10 +13,14 @@ const useConfigsStore = defineStore('configs', () => {
   const output = ref<Output>('svg');
   const baseWidth = ref(800);
   const baseHeight = ref<number | undefined>(undefined);
+  const baseUMLUrl = ref('https://www.plantuml.com/plantuml/');
   const isObjectFit = ref(true);
   const deg = ref(315);
   const colors = ref(['#42d392', '#647eff']);
-  const overridesPrimaryColor = ref('#42d392')
+  const overridesPrimaryColor = ref('#18a058')
+  const overridesPrimaryColorHover = ref('#36ad6a');
+  const overridesPrimaryColorPressed = ref('#0c7a43');
+  
   
   const $reset = () => {
     theme.value = null;
@@ -26,7 +30,10 @@ const useConfigsStore = defineStore('configs', () => {
     isObjectFit.value = true;
     deg.value = 315;
     colors.value = ['#42d392', '#647eff'];
-    overridesPrimaryColor.value = '#42d392';
+    overridesPrimaryColor.value = '#18a058';
+    overridesPrimaryColorHover.value = '#36ad6a';
+    overridesPrimaryColorPressed.value = '#0c7a43';
+    baseUMLUrl.value = 'https://www.plantuml.com/plantuml/';
   };
   
   const $export = () => {
@@ -47,9 +54,11 @@ const useConfigsStore = defineStore('configs', () => {
     
     const blob = new Blob([JSON.stringify(config)], {type: 'application/json'});
     const url = URL.createObjectURL(blob);
-    const a = document.createElement
     if (url) {
-      window.open(url);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'plantuml-editor-config.json';
+      a.click();
       URL.revokeObjectURL(url);
     }
   }
@@ -105,7 +114,10 @@ const useConfigsStore = defineStore('configs', () => {
     theme,
     direction,
     output,
+    baseUMLUrl,
     overridesPrimaryColor,
+    overridesPrimaryColorHover,
+    overridesPrimaryColorPressed,
     setOutput,
     setTheme,
     setDirection,

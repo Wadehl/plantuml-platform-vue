@@ -26,9 +26,8 @@ const configs = useConfigsStore();
 const themeOverrides = computed(() => ({
   common: {
     primaryColor: configs.overridesPrimaryColor,
-  },
-  Button: {
-    hoverColor: configs.overridesPrimaryColor,
+    primaryColorHover: configs.overridesPrimaryColorHover,
+    primaryColorPressed: configs.overridesPrimaryColorPressed,
   }
 }));
 
