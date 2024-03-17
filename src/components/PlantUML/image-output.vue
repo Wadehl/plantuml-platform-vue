@@ -109,7 +109,7 @@ const handleSelect = async (key: string | number) => {
 </script>
 
 <template>
-  <div class="absolute top-0 right-0">
+  <div class="absolute top-0 right-0 z-999">
     <n-space class="m-1">
       <n-popselect v-model:value="configs.output" :options="options" trigger="click">
         <n-button type="primary">{{ configs.output || '弹出选择' }}</n-button>
@@ -120,9 +120,10 @@ const handleSelect = async (key: string | number) => {
     </n-space>
   </div>
 
-  <n-image object-fit="contain" :src="store.svgUrl" alt="svg" class="w-full flex justify-center pt-12" width="90%"
-           height="100%"
-           v-if="store.svgUrl" :show-toolbar="true"/>
+  <n-scrollbar>
+    <n-image object-fit="contain" :src="store.svgUrl" alt="svg" class="w-full flex justify-center py-12" width="80%"
+             v-if="store.svgUrl" :show-toolbar="true"/>
+  </n-scrollbar>
 </template>
 
 <style scoped>

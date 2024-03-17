@@ -128,7 +128,11 @@ const menuItems = ref([
           </n-form-item>
         </n-form>
         <template #footer>
-          <n-button type="primary" @click="configs.$reset()">重置</n-button>
+          <n-space>
+            <n-button @click="configs.$reset()">重置</n-button>
+            <n-button type="primary" @click="() => configs.$import()">导入</n-button>
+            <n-button type="info" @click="() => configs.$export()">导出</n-button>
+          </n-space>
         </template>
       </n-drawer-content>
     </n-drawer>
