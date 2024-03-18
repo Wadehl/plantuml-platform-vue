@@ -87,8 +87,10 @@ const useConfigsStore = defineStore('configs', () => {
           overridesPrimaryColor.value = config.overridesPrimaryColor;
         }
         reader.readAsText(file);
+        $message.success('导入成功');
       }
     }
+    input.click();
   }
   
   const setTheme = (new_theme: boolean) => {

@@ -51,7 +51,7 @@ const onBeforeEditorMount = (monaco: any) => {
 }
 
 const render = (text: string) => {
-  let svgUrl = 'https://www.plantuml.com/plantuml/';
+  let svgUrl = config.baseUMLUrl;
   if (config.theme) {
     svgUrl += 'd';
   }

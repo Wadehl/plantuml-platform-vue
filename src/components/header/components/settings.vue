@@ -92,7 +92,23 @@ const setting_active = computed({
           </n-form>
         </n-tab-pane>
         <n-tab-pane name="download" tab="下载设置 😶‍🌫️">
-          <div class="font-bold font-size-4 my-2">SVG设置 😶️</div>
+          <div class="font-bold font-size-4 my-2 cursor-help">Plantuml服务设置
+            <n-popover trigger="hover">
+              <template #trigger>
+                <span class="cursor-help">🤓</span>
+              </template>
+              <span>PlantUML地址，用于图片服务，如：http://www.plantuml.com/plantuml/svg/{图片的hash}</span>
+            </n-popover>
+          </div>
+          <n-form label-align="left" label-placement="left" label-width="auto">
+            <n-alert class="my-.5rem" title="WARNING⚠️" type="warning" closable :show-icon="false">
+              Do not change the default value unless you know what you are doing.
+            </n-alert>
+            <n-form-item path="align" label="服务地址">
+              <n-input v-model:value="configs.baseUMLUrl" size="medium" :clearable="true"/>
+            </n-form-item>
+          </n-form>
+          <div class="font-bold font-size-4 my-2">SVG导出设置 😶️</div>
           <n-form label-align="left" label-placement="left" label-width="auto">
             <n-form-item path="align" label="与原图等比例">
               <n-switch v-model:value="configs.isObjectFit" size="medium" :checked-value="true"

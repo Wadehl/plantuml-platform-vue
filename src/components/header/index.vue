@@ -84,7 +84,7 @@ const menuItems = ref([
         :gradient="`linear-gradient(${configs.deg}deg,${configs.colors[0]} 25%,${configs.colors[1]})`"
         size="1.5rem"
       >
-        PlantUML Vue
+        PlantUML Platform Vue
       </n-gradient-text>
       <span class="font-size-1.5rem">🤗</span>
     </div>
