@@ -34,7 +34,7 @@ onMounted(() => {
 function ready(_e: unknown, _monaco: any) {
   $loadingBar.finish();
   store.setLoading(false);
-  $message.success('代码编辑器加载完成');
+  $message.success('Code Editor Initialization Complete!');
 }
 
 const onBeforeEditorMount = (monaco: any) => {

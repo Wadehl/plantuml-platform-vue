@@ -1,7 +1,12 @@
 <script setup lang="ts">
-import {ref, computed} from 'vue'
+import {ref, computed, onMounted} from 'vue'
 import {NIcon} from 'naive-ui'
 import {useConfigsStore} from '@/store'
+
+import {languages, currentLanguage} from "@/locales";
+import {useI18n} from "vue-i18n";
+
+const {locale} = useI18n();
 
 import Settings from './components/settings.vue';
 
@@ -13,6 +18,10 @@ import {
   SettingsOutline as SettingsIcon,
   LogoGithub as GithubIcon
 } from '@vicons/ionicons5'
+
+import {
+  TranslateRound as TranslateIcon
+} from '@vicons/material';
 
 
 const props = defineProps({
@@ -38,42 +47,49 @@ const toggle = () => {
 
 const setting_active = ref(false);
 
-const menuItems = ref([
+const menuItems = ref<{
+  key: string,
+  label: string,
+  icon: any,
+  event: () => void,
+  show: boolean
+}[]>([
   /**
    * 这里是菜单项
    * key: 唯一标识
    * label: 标签
    * icon: 图标
    * event: 点击事件
+   * show: 是否显示
    */
-  {
-    key: 'github',
-    label: 'GitHub',
-    icon: GithubIcon,
-    event: () => {
-      window.open('https://github.com/Wadehl/plantuml-platform', '_blank');
-    },
-    show: true
-  },
-  // {
-  //   key: 'fullScreen',
-  //   label: '全屏',
-  //   event: () => {
-  //     emits('toggle');
-  //   },
-  //   icon: FullScreenIcon,
-  //   show: true
-  // },
-  {
-    key: 'settings',
-    label: '设置',
-    icon: SettingsIcon,
-    event: () => {
-      setting_active.value = true;
-    },
-    show: true
-  }
 ]);
+
+onMounted(() => {
+  menuItems.value = [
+    {
+      key: 'github',
+      label: 'GitHub',
+      icon: GithubIcon,
+      event: () => {
+        window.open('https://github.com/Wadehl/plantuml-platform', '_blank');
+      },
+      show: true
+    },
+    {
+      key: 'settings',
+      label: 'setting',
+      icon: SettingsIcon,
+      event: () => {
+        setting_active.value = true;
+      },
+      show: true
+    }
+  ]
+})
+
+const onLanguageChange = (value: string) => {
+  locale.value = value;
+}
 
 </script>
 
@@ -94,8 +110,14 @@ const menuItems = ref([
           <template #trigger>
             <n-icon size="1.5rem" :component="item.icon" class="p-0.5rem cursor-pointer"/>
           </template>
-          {{ item.label }}
+          {{ $t(item.label) }}
         </n-tooltip>
+      </div>
+      <div>
+        <n-popselect v-model:value="currentLanguage" :options="languages" trigger="hover"
+                     @update:value="onLanguageChange">
+          <n-icon size="1.5rem" :component="TranslateIcon" class="p-0.5rem cursor-pointer"/>
+        </n-popselect>
       </div>
       <div @click="() => configs.setTheme(!configs.theme)">
         <n-tooltip trigger="hover">
@@ -103,7 +125,7 @@ const menuItems = ref([
             <n-icon :class="{'p-0.5rem': true, 'cursor-pointer': true}" size="1.5rem"
                     :component="configs.theme ? SunnyIcon : MoonIcon"/>
           </template>
-          {{ configs.theme ? '明亮模式' : '黑暗模式' }}
+          {{ configs.theme ? $t('light_mode') : $t('dark_mode') }}
         </n-tooltip>
       </div>
     </div>

@@ -1,6 +1,9 @@
 <script setup lang="ts">
-import {ref} from 'vue';
+import {onMounted, ref} from 'vue';
 import {useCodeStore, useConfigsStore} from '@/store';
+import {useI18n} from 'vue-i18n';
+
+const {t} = useI18n();
 
 const store = useCodeStore();
 const configs = useConfigsStore();
@@ -65,20 +68,27 @@ const downloadFile = (pngData: string, filename: string) => {
   URL.revokeObjectURL(pngData);
 }
 
-const download_options = [
-  {
-    label: '原生png下载',
-    key: 0,
-  },
-  {
-    label: '原生svg下载',
-    key: 1,
-  },
-  {
-    label: 'svg转png下载',
-    key: 2,
-  }
-]
+const download_options = ref<{
+  label: string;
+  key: string | number;
+}[]>([]
+);
+
+onMounted(() => {
+  download_options.value = [
+    {
+      label: t('native_png'),
+      key: 0,
+    },
+    {
+      label: t('native_svg'),
+      key: 1,
+    },
+    {
+      label: t('svg_to_png'),
+      key: 2,
+    }]
+})
 
 const download_loading = ref(false);
 
@@ -106,16 +116,17 @@ const handleSelect = async (key: string | number) => {
     download_loading.value = false;
   }
 }
+
 </script>
 
 <template>
   <div class="absolute top-0 right-0 z-999">
     <n-space class="m-1">
-      <n-popselect v-model:value="configs.output" :options="options" trigger="click">
-        <n-button type="primary">{{ configs.output || '弹出选择' }}</n-button>
+      <n-popselect v-model:value="configs.output" :options="options" trigger="hover">
+        <n-button type="primary">{{ configs.output }}</n-button>
       </n-popselect>
       <n-dropdown trigger="hover" :options="download_options" @select="handleSelect">
-        <n-button type="primary" :loading="download_loading">下载图片</n-button>
+        <n-button type="primary" :loading="download_loading">{{ $t('download') }}</n-button>
       </n-dropdown>
     </n-space>
   </div>
