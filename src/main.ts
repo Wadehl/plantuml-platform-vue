@@ -4,6 +4,7 @@ import App from './App.vue'
 import 'virtual:uno.css'
 
 import pinia from './store'
+import i18n from './locales'
 
 // 通用字体
 import 'vfonts/Roboto.css'
@@ -24,4 +25,5 @@ createApp(App)
       vs: 'https://cdn.bootcdn.net/ajax/libs/monaco-editor/0.43.0/min/vs'
     }
   })
+  .use(i18n)
   .mount('#app')

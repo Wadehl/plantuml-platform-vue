@@ -21,7 +21,6 @@ const useConfigsStore = defineStore('configs', () => {
   const overridesPrimaryColorHover = ref('#36ad6a');
   const overridesPrimaryColorPressed = ref('#0c7a43');
   
-  
   const $reset = () => {
     theme.value = null;
     direction.value = 'horizontal';
