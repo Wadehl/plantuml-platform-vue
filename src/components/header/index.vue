@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {ref, computed, onMounted} from 'vue'
+import {ref, computed, shallowRef} from 'vue'
 import {NIcon} from 'naive-ui'
 import {useConfigsStore} from '@/store'
 
@@ -51,7 +51,7 @@ const toggle = () => {
 
 const setting_active = ref(false);
 
-const menuItems = ref<{
+const menuItems = shallowRef<{
   key: string,
   label: string,
   icon: any,
@@ -66,39 +66,34 @@ const menuItems = ref<{
    * event: 点击事件
    * show: 是否显示
    */
+  {
+    key: 'github',
+    label: 'GitHub',
+    icon: GithubIcon,
+    event: () => {
+      window.open('https://github.com/Wadehl/plantuml-platform', '_blank');
+    },
+    show: true
+  },
+  {
+    key: 'settings',
+    label: 'setting',
+    icon: SettingsIcon,
+    event: () => {
+      setting_active.value = true;
+    },
+    show: true
+  },
+  {
+    key: 'document',
+    label: 'document',
+    icon: DocumentIcon,
+    event: () => {
+      window.open(`https://plantuml.com/${locale.value.split('-')[0]}/guide`, '_blank')
+    },
+    show: true
+  }
 ]);
-
-onMounted(() => {
-  menuItems.value = [
-    {
-      key: 'github',
-      label: 'GitHub',
-      icon: GithubIcon,
-      event: () => {
-        window.open('https://github.com/Wadehl/plantuml-platform', '_blank');
-      },
-      show: true
-    },
-    {
-      key: 'settings',
-      label: 'setting',
-      icon: SettingsIcon,
-      event: () => {
-        setting_active.value = true;
-      },
-      show: true
-    },
-    {
-      key: 'document',
-      label: 'document',
-      icon: DocumentIcon,
-      event: () => {
-        window.open(`https://plantuml.com/${locale.value.split('-')[0]}/guide`, '_blank')
-      },
-      show: true
-    }
-  ]
-})
 
 const onLanguageChange = (value: string) => {
   locale.value = value;
@@ -126,7 +121,7 @@ const onLanguageChange = (value: string) => {
           {{ $t(item.label) }}
         </n-tooltip>
       </div>
-      <n-divider vertical />
+      <n-divider vertical/>
       <div>
         <n-popselect v-model:value="currentLanguage" :options="languages" trigger="hover"
                      @update:value="onLanguageChange">
