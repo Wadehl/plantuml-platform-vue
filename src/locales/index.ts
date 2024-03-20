@@ -1,8 +1,8 @@
-import {createI18n} from "vue-i18n";
-import {ref} from 'vue';
+import { createI18n } from 'vue-i18n';
+import { ref } from 'vue';
 
-import zh_CN from "./zh-CN";
-import en_US from "./en-US";
+import zh_CN from './zh-CN';
+import en_US from './en-US';
 
 export const languages = [
   {
@@ -24,8 +24,7 @@ const i18n = createI18n({
   messages: {
     'zh-CN': zh_CN,
     'en-US': en_US
-  },
-  
+  }
 });
 
 export default i18n;

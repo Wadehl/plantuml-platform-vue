@@ -1,0 +1,5 @@
+dist/*
+*.d.ts
+main.ts
+vite.config.ts
+uno.config.ts

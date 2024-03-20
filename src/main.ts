@@ -1,18 +1,18 @@
-import {createApp} from 'vue'
-import './style.css'
-import App from './App.vue'
-import 'virtual:uno.css'
+import { createApp } from 'vue';
+import './style.css';
+import App from './App.vue';
+import 'virtual:uno.css';
 
-import pinia from './store'
-import i18n from './locales'
+import pinia from './store';
+import i18n from './locales';
 
 // 通用字体
-import 'vfonts/Roboto.css'
+import 'vfonts/Roboto.css';
 // 等宽字体
-import 'vfonts/FiraCode.css'
+import 'vfonts/FiraCode.css';
 
 // monaco-vue
-import {install as VueMonacoEditorPlugin} from '@guolao/vue-monaco-editor'
+import { install as VueMonacoEditorPlugin } from '@guolao/vue-monaco-editor';
 
 // 公共组件
 import AppProvider from '@/components/AppProvider/index.vue';
@@ -26,4 +26,4 @@ createApp(App)
     }
   })
   .use(i18n)
-  .mount('#app')
+  .mount('#app');

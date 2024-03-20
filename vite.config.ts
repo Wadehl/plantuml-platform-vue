@@ -1,14 +1,17 @@
-import {fileURLToPath, URL} from 'node:url'
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
+import { fileURLToPath, URL } from 'node:url';
+import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
 
-import AutoImport from 'unplugin-auto-import/vite'
-import Components from 'unplugin-vue-components/vite'
-import {NaiveUiResolver} from "unplugin-vue-components/resolvers";
+import AutoImport from 'unplugin-auto-import/vite';
+import Components from 'unplugin-vue-components/vite';
+import { NaiveUiResolver } from 'unplugin-vue-components/resolvers';
 
 // unocss
-import UnoCSS from 'unocss/vite'
-import {presetAttributify, presetUno} from "unocss" // Presets
+import UnoCSS from 'unocss/vite';
+import { presetAttributify, presetUno } from 'unocss'; // Presets
+
+// eslint
+import eslintPlugin from '@nabla/vite-plugin-eslint';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -31,12 +34,13 @@ export default defineConfig({
       ]
     }),
     Components({
-      resolvers: [NaiveUiResolver()],
+      resolvers: [NaiveUiResolver()]
     }),
+    eslintPlugin()
   ],
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('src', import.meta.url)),
-    },
+      '@': fileURLToPath(new URL('src', import.meta.url))
+    }
   }
-})
+});

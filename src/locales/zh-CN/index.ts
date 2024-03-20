@@ -1,5 +1,6 @@
 import settings from './settings';
 
+// eslint-disable-next-line @typescript-eslint/naming-convention
 const zh_CN = {
   reset: '重置',
   copy: '复制',
@@ -12,7 +13,7 @@ const zh_CN = {
   github: 'GitHub',
   light_mode: '浅色模式',
   import_code: '导入代码',
-  ...settings,
-}
+  ...settings
+};
 
 export default zh_CN;
