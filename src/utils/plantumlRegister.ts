@@ -1,6 +1,4 @@
 import { languageDef } from './highlight';
-import { editor } from 'monaco-editor';
-import IWordAtPosition = editor.IWordAtPosition;
 
 const initMonaco = (monaco: any): any => {
   monaco.languages.register({
@@ -80,8 +78,8 @@ const initMonaco = (monaco: any): any => {
   // custom hover
   monaco.languages.registerHoverProvider('plantuml', {
     provideHover: function (model: any, position: any) {
-      const word: IWordAtPosition | null = model.getWordAtPosition(position);
-      if (word != null) {
+      const word: any = model.getWordAtPosition(position);
+      if (word) {
         const range = {
           startLineNumber: position.lineNumber,
           startColumn: word.startColumn,
