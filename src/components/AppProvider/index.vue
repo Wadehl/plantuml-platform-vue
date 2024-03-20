@@ -1,5 +1,9 @@
 <template>
-  <n-config-provider :theme="configs.theme" :theme-overrides="themeOverrides">
+  <n-config-provider :theme="configs.theme"
+                     :locale="locale === 'zh-CN' ? zhCN : enUS"
+                      :dateLocale="locale === 'zh-CN' ? dateZhCN : dateEnUS"
+                     :theme-overrides="themeOverrides"
+  >
     <n-global-style/>
     <n-loading-bar-provider>
       <n-dialog-provider>
@@ -21,6 +25,11 @@
 import {defineComponent, h, computed} from 'vue'
 import {useLoadingBar, useDialog, useMessage, useNotification } from 'naive-ui';
 import {useConfigsStore} from '@/store';
+import {useI18n} from 'vue-i18n';
+import {zhCN, dateZhCN, enUS, dateEnUS} from 'naive-ui';
+
+
+const {locale} = useI18n();
 
 const configs = useConfigsStore();
 const themeOverrides = computed(() => ({

@@ -20,7 +20,7 @@ export const currentLanguage = ref('en-US');
 const i18n = createI18n({
   locale: currentLanguage.value,
   allowComposition: true,
-  legacy: true,
+  legacy: false,
   messages: {
     'zh-CN': zh_CN,
     'en-US': en_US

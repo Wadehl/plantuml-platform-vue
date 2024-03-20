@@ -68,7 +68,7 @@ const menuItems = shallowRef<{
    */
   {
     key: 'github',
-    label: 'GitHub',
+    label: 'github',
     icon: GithubIcon,
     event: () => {
       window.open('https://github.com/Wadehl/plantuml-platform', '_blank');

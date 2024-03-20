@@ -22,7 +22,10 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "types": [
-      "naive-ui/volar"
+      "naive-ui/volar",
+      "lodash-es",
+      "plantuml-encoder",
+      "vue",
     ],
     "allowSyntheticDefaultImports": true,
     // alias
