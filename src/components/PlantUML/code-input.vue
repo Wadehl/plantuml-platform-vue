@@ -11,10 +11,9 @@ import { useClipboard } from '@vueuse/core';
 import initMonaco from '@/utils/plantumlRegister';
 import * as plantumlEncoder from 'plantuml-encoder';
 
-import {
-  CopySelect20Regular as CopyIcon,
-  ArrowUpload20Filled as UploadIcon
-} from '@vicons/fluent';
+import { CopySelect20Regular as CopyIcon } from '@vicons/fluent';
+
+import { FileOpenTwotone as UploadIcon } from '@vicons/material';
 
 import Operation from './components/Operation.vue';
 
