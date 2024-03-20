@@ -42,7 +42,7 @@ const onBeforeEditorMount = (monaco: any) => {
   if (
     !monaco.languages
       .getLanguages()
-      .map((lang) => lang.id)
+      .map((lang: {id: string}) => lang.id)
       .includes('mylang')
   ) {
     initMonaco(monaco);
@@ -70,7 +70,19 @@ watch(config, () => {
 </script>
 
 <template>
-  <n-flex verticle>
+  <div class="position-relative">
+    <div class="position-absolute top-0 right-13% z-100">
+      <n-space>
+        <n-button
+          dashed
+          size="small"
+          class="m-1"
+          @click="formatCode"
+        >
+          Format
+        </n-button>
+      </n-space>
+    </div>
     <vue-monaco-editor
       v-model:value="store.code_text"
       :options="options"
@@ -86,8 +98,7 @@ watch(config, () => {
         <span></span>
       </template>
     </vue-monaco-editor>
-  </n-flex>
-
+  </div>
 </template>
 
 <style scoped>

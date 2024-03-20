@@ -20,8 +20,12 @@ import {
 } from '@vicons/ionicons5'
 
 import {
-  TranslateRound as TranslateIcon
+  TranslateRound as TranslateIcon,
 } from '@vicons/material';
+
+import {
+  DocumentSearch24Regular as DocumentIcon
+} from '@vicons/fluent';
 
 
 const props = defineProps({
@@ -83,6 +87,15 @@ onMounted(() => {
         setting_active.value = true;
       },
       show: true
+    },
+    {
+      key: 'document',
+      label: 'document',
+      icon: DocumentIcon,
+      event: () => {
+        window.open(`https://plantuml.com/${locale.value.split('-')[0]}/guide`, '_blank')
+      },
+      show: true
     }
   ]
 })
@@ -113,6 +126,7 @@ const onLanguageChange = (value: string) => {
           {{ $t(item.label) }}
         </n-tooltip>
       </div>
+      <n-divider vertical />
       <div>
         <n-popselect v-model:value="currentLanguage" :options="languages" trigger="hover"
                      @update:value="onLanguageChange">

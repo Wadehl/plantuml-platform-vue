@@ -23,6 +23,8 @@
     "vue-i18n": "^9.10.2"
   },
   "devDependencies": {
+    "@types/lodash-es": "^4.17.12",
+    "@types/plantuml-encoder": "^1.4.2",
     "@unocss/preset-attributify": "^0.58.5",
     "@unocss/preset-uno": "^0.58.5",
     "@vicons/ionicons5": "^0.12.0",

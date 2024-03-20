@@ -2,6 +2,7 @@ import settings from './settings';
 
 const zh_CN = {
   reset: '重置',
+  document: 'PlantUML文档',
   download: '下载',
   setting: '设置',
   dark_mode: '深色模式',
