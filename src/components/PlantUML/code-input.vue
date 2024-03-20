@@ -54,7 +54,7 @@ const onBeforeEditorMount = (monaco: any): void => {
     !monaco.languages
       .getLanguages()
       .map((lang: { id: string }) => lang.id)
-      .includes('mylang')
+      .includes('plantuml')
   ) {
     initMonaco(monaco);
     render(store.code_text);
