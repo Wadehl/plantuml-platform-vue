@@ -12,6 +12,7 @@ declare module 'vue' {
     Header: typeof import('./src/components/header/index.vue')['default']
     ImageOutput: typeof import('./src/components/PlantUML/image-output.vue')['default']
     NAlert: typeof import('naive-ui')['NAlert']
+    NBackTop: typeof import('naive-ui')['NBackTop']
     NButton: typeof import('naive-ui')['NButton']
     NColorPicker: typeof import('naive-ui')['NColorPicker']
     NConfigProvider: typeof import('naive-ui')['NConfigProvider']

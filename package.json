@@ -2,11 +2,12 @@
   "name": "plantuml-platform-vue",
   "private": true,
   "version": "1.0.0",
+  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "eslint": "eslint --ext .js,.ts,.vue --fix --quiet ./"
+    "lint": "eslint --ext .js,.ts,.vue --fix --quiet ./"
   },
   "dependencies": {
     "@guolao/vue-monaco-editor": "^1.5.1",

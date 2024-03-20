@@ -142,24 +142,26 @@ const uploadCode = async () => {
         <Operation :icon="UploadIcon" key="upload_code" @event="uploadCode" />
       </n-space>
     </div>
-    <vue-monaco-editor
-      ref="editorRef"
-      v-model:value="store.code_text"
-      :options="options"
-      height="100%"
-      width="100%"
-      @beforeMount="onBeforeEditorMount"
-      @mount="ready"
-      @change="debouncedRender"
-      language="plantuml"
-      :theme="config.theme ? 'plantuml-theme-dark' : 'plantuml-theme'"
-      @mouseenter="opacity = 1"
-      @mouseleave="opacity = 0"
-    >
-      <template #default>
-        <span></span>
-      </template>
-    </vue-monaco-editor>
+    <n-back-top :bottom="220" :visibility-height="10">
+      <vue-monaco-editor
+        ref="editorRef"
+        v-model:value="store.code_text"
+        :options="options"
+        height="100%"
+        width="100%"
+        @beforeMount="onBeforeEditorMount"
+        @mount="ready"
+        @change="debouncedRender"
+        language="plantuml"
+        :theme="config.theme ? 'plantuml-theme-dark' : 'plantuml-theme'"
+        @mouseenter="opacity = 1"
+        @mouseleave="opacity = 0"
+      >
+        <template #default>
+          <span></span>
+        </template>
+      </vue-monaco-editor>
+    </n-back-top>
   </div>
 </template>
 

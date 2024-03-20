@@ -49,11 +49,6 @@ export default defineConfig({
       disable: false,
       threshold: 10240,
       algorithm: 'brotliCompress'
-    }),
-    visualizer({
-      open: true,
-      gzipSize: true,
-      brotliSize: true
     })
   ],
   resolve: {

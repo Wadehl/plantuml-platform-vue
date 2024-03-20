@@ -16,7 +16,7 @@ const store = useCodeStore();
 const split = ref(0.4);
 
 onMounted(() => {
-  const isLargeScreen = useMediaQuery('(min-width: 1024px)');
+  const isLargeScreen = useMediaQuery('(min-width: 768px)');
   if (!isLargeScreen.value) {
     split.value = 0.3;
     configs.direction = 'vertical';
