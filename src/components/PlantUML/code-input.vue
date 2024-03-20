@@ -133,8 +133,8 @@ const uploadCode = async () => {
 <template>
   <div class="position-relative">
     <div
-      class="position-absolute top-3% right-13% z-100"
-      hover="transition-all duration-300 ease-in-out opacity-100"
+      class="position-absolute top-3% right-13% z-100 opacity-0"
+      hover="transition-opacity duration-300 ease-in-out opacity-100"
       :class="[`opacity-${opacity * 100}`]"
     >
       <n-space>
