@@ -3,7 +3,7 @@ import { ref, computed, shallowRef } from 'vue';
 import { NIcon } from 'naive-ui';
 import { useConfigsStore } from '@/store';
 
-import { languages, currentLanguage } from '@/locales';
+import { languages, currentLanguage, saveLanguage } from '@/locales';
 import { useI18n } from 'vue-i18n';
 
 import Settings from './components/settings.vue';
@@ -97,6 +97,7 @@ const menuItems = shallowRef<
 
 const onLanguageChange = (value: string) => {
   locale.value = value;
+  saveLanguage(value);
 };
 </script>
 

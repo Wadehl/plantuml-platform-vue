@@ -9,6 +9,7 @@ import { useFullscreen, useMediaQuery } from '@vueuse/core';
 
 import { useConfigsStore, useCodeStore } from '@/store';
 import { ref, onMounted } from 'vue';
+import { loadLanguage } from '@/locales';
 
 const configs = useConfigsStore();
 const store = useCodeStore();
@@ -23,6 +24,8 @@ onMounted(() => {
   } else {
     configs.direction = 'horizontal';
   }
+
+  loadLanguage();
 });
 
 const contentRef = ref<HTMLElement | null>(null);
