@@ -1,12 +1,24 @@
-import { languageDef } from './highlight';
+import { languageDef } from '@sinm/monaco-plantuml/src/monaco/hightlight';
 
-const initMonaco = (monaco: any): any => {
+import { PUmlExtension } from '@sinm/monaco-plantuml';
+import PUmlWorker from '@sinm/monaco-plantuml/lib/puml.worker?worker';
+import { editor } from 'monaco-editor';
+import IStandaloneCodeEditor = editor.IStandaloneCodeEditor;
+
+const initMonaco = (ed: IStandaloneCodeEditor, monaco: any) => {
+  const worker = new PUmlWorker();
+  const extension = new PUmlExtension(worker);
+  const disposer = extension.active(ed);
+  // console.log(extension, disposer);
+  // disposer.dispose();
+};
+
+export const onBeforeMount = (monaco: any) => {
   monaco.languages.register({
     id: 'plantuml'
   });
-  // custom language definition
   monaco.languages.setMonarchTokensProvider('plantuml', languageDef);
-  // custom theme
+
   monaco.editor.defineTheme('plantuml-theme', {
     base: 'vs',
     inherit: true,

@@ -8,7 +8,7 @@ import { debounce } from 'lodash-es';
 import { useClipboard } from '@vueuse/core';
 
 // plantuml
-import initMonaco from '@/utils/plantumlRegister';
+import initMonaco, { onBeforeMount } from '@/utils/plantumlRegister';
 import * as plantumlEncoder from 'plantuml-encoder';
 
 import { CopySelect20Regular as CopyIcon } from '@vicons/fluent';
@@ -42,23 +42,13 @@ onMounted(() => {
   store.setLoading(true);
 });
 
-function ready(_e: unknown, _monaco: any): void {
+const ready = (editor: any, monaco: any): void => {
+  // 防止重复注册
+  initMonaco(editor, monaco);
+  render(store.code_text);
   $loadingBar.finish();
   store.setLoading(false);
   $message.success('Code Editor Initialization Complete!');
-}
-
-const onBeforeEditorMount = (monaco: any): void => {
-  // 防止重复注册
-  if (
-    !monaco.languages
-      .getLanguages()
-      .map((lang: { id: string }) => lang.id)
-      .includes('mylang')
-  ) {
-    initMonaco(monaco);
-    render(store.code_text);
-  }
 };
 
 const render = (text: string): void => {
@@ -91,7 +81,7 @@ onMounted(() => {
   copy_failed.value = t('copy_failed');
 });
 
-const handleCopy = async (): void => {
+const handleCopy = async (): Promise<void> => {
   if (isSupported) {
     await copy();
     $message.success(copied);
@@ -148,7 +138,7 @@ const uploadCode = async () => {
       :options="options"
       height="100%"
       width="100%"
-      @beforeMount="onBeforeEditorMount"
+      @beforeMount="onBeforeMount"
       @mount="ready"
       @change="debouncedRender"
       language="plantuml"
