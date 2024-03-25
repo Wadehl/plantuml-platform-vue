@@ -1,16 +1,16 @@
 import { languageDef } from '@sinm/monaco-plantuml/src/monaco/hightlight';
 
-import { PUmlExtension } from '@sinm/monaco-plantuml';
-import PUmlWorker from '@sinm/monaco-plantuml/lib/puml.worker?worker';
+// import { PUmlExtension } from '@sinm/monaco-plantuml';
+// import PUmlWorker from '@sinm/monaco-plantuml/lib/puml.worker?worker';
 import { editor } from 'monaco-editor';
 import IStandaloneCodeEditor = editor.IStandaloneCodeEditor;
 
 const initMonaco = (ed: IStandaloneCodeEditor, monaco: any) => {
-  const worker = new PUmlWorker();
-  const extension = new PUmlExtension(worker);
-  const disposer = extension.active(ed);
-  // console.log(extension, disposer);
-  // disposer.dispose();
+  // const worker = new PUmlWorker();
+  // const extension = new PUmlExtension(worker);
+  // const disposer = extension.active(ed);
+  // // console.log(extension, disposer);
+  // // disposer.dispose();
 };
 
 export const onBeforeMount = (monaco: any) => {

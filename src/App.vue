@@ -3,6 +3,7 @@ import CodeInput from '@/components/PlantUML/code-input.vue';
 import ImageOutput from '@/components/PlantUML/image-output.vue';
 
 import Header from '@/components/header/index.vue';
+import Sidebar from '@/components/sideTask/index.vue';
 
 // hooks
 import { useFullscreen, useMediaQuery } from '@vueuse/core';
@@ -39,40 +40,50 @@ const { isFullscreen, toggle } = useFullscreen(contentRef);
       <n-layout-header :bordered="true" class="h-5vh">
         <Header @toggle="toggle" v-model:is-full-screen="isFullscreen" />
       </n-layout-header>
-      <n-layout-content
-        class="box-border p-1rem h-95vh"
-        content-style="width: 100%; "
-        ref="contentRef"
-      >
-        <n-split
-          v-model:size="split"
-          :direction="configs.direction"
-          :max="0.75"
-          :min="0.25"
-          class="h-full w-full"
+      <n-layout has-sider class="h-95vh" :native-scrollbar="false">
+        <n-layout-sider
+          :native-scrollbar="false"
+          :collapsed-width="0"
+          show-trigger="bar"
+          class="h-95vh"
         >
-          <template #1>
-            <n-skeleton class="w-full h-full" v-if="store.loading" />
-            <CodeInput class="w-full h-full" v-show="!store.loading" />
-          </template>
-          <template #2>
-            <div
-              class="w-full mx-auto my-auto box-border p-10"
-              v-if="store.loading"
-            >
-              <n-skeleton w-full h-full style="min-height: 600px" />
-            </div>
-            <div
-              class="w-full mt-1rem mx-auto relative overflow-y-auto h-full"
-              v-if="!store.loading"
-            >
-              <ImageOutput
-                class="flex justify-center items-center w-full h-full"
-              />
-            </div>
-          </template>
-        </n-split>
-      </n-layout-content>
+          <Sidebar />
+        </n-layout-sider>
+        <n-layout-content
+          class="box-border p-1rem h-95vh"
+          content-style="width: 100%; "
+          ref="contentRef"
+        >
+          <n-split
+            v-model:size="split"
+            :direction="configs.direction"
+            :max="0.75"
+            :min="0.25"
+            class="h-full w-full"
+          >
+            <template #1>
+              <n-skeleton class="w-full h-full" v-if="store.loading" />
+              <CodeInput class="w-full h-full" v-show="!store.loading" />
+            </template>
+            <template #2>
+              <div
+                class="w-full mx-auto my-auto box-border p-10"
+                v-if="store.loading"
+              >
+                <n-skeleton w-full h-full style="min-height: 600px" />
+              </div>
+              <div
+                class="w-full mt-1rem mx-auto relative overflow-y-auto h-full"
+                v-if="!store.loading"
+              >
+                <ImageOutput
+                  class="flex justify-center items-center w-full h-full"
+                />
+              </div>
+            </template>
+          </n-split>
+        </n-layout-content>
+      </n-layout>
     </n-layout>
   </AppProvider>
 </template>

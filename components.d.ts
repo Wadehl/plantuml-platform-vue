@@ -32,9 +32,13 @@ declare module 'vue' {
     NLayout: typeof import('naive-ui')['NLayout']
     NLayoutContent: typeof import('naive-ui')['NLayoutContent']
     NLayoutHeader: typeof import('naive-ui')['NLayoutHeader']
+    NLayoutSider: typeof import('naive-ui')['NLayoutSider']
+    NList: typeof import('naive-ui')['NList']
+    NListItem: typeof import('naive-ui')['NListItem']
     NLoadingBarProvider: typeof import('naive-ui')['NLoadingBarProvider']
     NMessageProvider: typeof import('naive-ui')['NMessageProvider']
     NNotificationProvider: typeof import('naive-ui')['NNotificationProvider']
+    NPopconfirm: typeof import('naive-ui')['NPopconfirm']
     NPopover: typeof import('naive-ui')['NPopover']
     NPopselect: typeof import('naive-ui')['NPopselect']
     NScrollbar: typeof import('naive-ui')['NScrollbar']
@@ -47,5 +51,7 @@ declare module 'vue' {
     NTooltip: typeof import('naive-ui')['NTooltip']
     Operation: typeof import('./src/components/PlantUML/components/Operation.vue')['default']
     Settings: typeof import('./src/components/header/components/settings.vue')['default']
+    SidebarItem: typeof import('./src/components/sideTask/components/SidebarItem.vue')['default']
+    SideTask: typeof import('./src/components/sideTask/index.vue')['default']
   }
 }

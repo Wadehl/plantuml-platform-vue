@@ -24,9 +24,9 @@ import jsonWorker from 'monaco-editor/esm/vs/language/json/json.worker?worker';
 import cssWorker from 'monaco-editor/esm/vs/language/css/css.worker?worker';
 import htmlWorker from 'monaco-editor/esm/vs/language/html/html.worker?worker';
 import tsWorker from 'monaco-editor/esm/vs/language/typescript/ts.worker?worker';
-import PUmlWorker from '@sinm/monaco-plantuml/lib/puml.worker?worker';
-
-const worker = new PUmlWorker();
+// import PUmlWorker from '@sinm/monaco-plantuml/lib/puml.worker?worker';
+//
+// const worker = new PUmlWorker();
 
 self.MonacoEnvironment = {
   getWorker(_, label) {
@@ -42,9 +42,9 @@ self.MonacoEnvironment = {
     if (label === 'typescript' || label === 'javascript') {
       return new tsWorker();
     }
-    if (label === 'plantuml' || label === 'puml') {
-      return worker;
-    }
+    // if (label === 'plantuml' || label === 'puml') {
+    //   return worker;
+    // }
     return new editorWorker();
   }
 };

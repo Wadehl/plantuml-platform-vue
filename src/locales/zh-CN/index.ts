@@ -1,4 +1,5 @@
 import settings from './settings';
+import puml from './puml';
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 const zh_CN = {
@@ -13,7 +14,11 @@ const zh_CN = {
   github: 'GitHub',
   light_mode: '浅色模式',
   import_code: '导入代码',
-  ...settings
+  sure_to_delete: '确定删除吗？',
+  use_this: '使用并编辑该代码',
+  add_task: '添加任务',
+  ...settings,
+  ...puml
 };
 
 export default zh_CN;

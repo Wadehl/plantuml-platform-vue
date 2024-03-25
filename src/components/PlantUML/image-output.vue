@@ -106,7 +106,7 @@ const handleSelect = async (key: string | number) => {
       const url = split_url.join('/');
       const blob = await fetch(url).then(async (res) => await res.blob());
       const download_url = URL.createObjectURL(blob);
-      downloadFile(download_url, 'plantuml.png', 'image/png');
+      downloadFile(download_url, 'plantuml.png');
     } else if (key === 1) {
       const res = await fetch(store.svgUrl);
       const svgString = await res.text();
