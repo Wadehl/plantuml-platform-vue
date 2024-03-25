@@ -25,7 +25,7 @@ export default defineConfig({
   plugins: [
     vue(),
     UnoCSS({
-      presets: [presetAttributify(), presetUno()]
+      configFile: './uno.config.ts'
     }),
     AutoImport({
       imports: [

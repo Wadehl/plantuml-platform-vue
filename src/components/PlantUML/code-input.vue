@@ -52,6 +52,8 @@ const ready = (editor: any, monaco: any): void => {
 };
 
 const render = (text: string): void => {
+  store.updateTask(store.active_index, text);
+
   let svgUrl = config.baseUMLUrl;
   if (config.theme) {
     svgUrl += 'd';
@@ -70,6 +72,13 @@ watch(
   },
   {
     deep: true
+  }
+);
+
+watch(
+  () => store.code_text,
+  (val) => {
+    render(val);
   }
 );
 

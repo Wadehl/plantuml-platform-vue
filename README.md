@@ -22,7 +22,8 @@ PlantUML Platform Vue online demo: https://plantuml-platform.vercel.app/
 
 ## Future Development Plan:
 
-- [X] Support for i18n (internationalization) 
+- [X] Support for I18N (internationalization) 
+- [ ] Multiple Task Support
 - [ ] Monaco-editor Copilot Support
 
 ## Pictures

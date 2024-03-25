@@ -49,7 +49,7 @@ export const loadLanguage = () => {
   }
 
   const lang = getLocalLanguage() || getBrowserLanguage() || 'en-US';
-  currentLanguage.value = lang;
+  currentLanguage.value = lang as 'zh-CN' | 'en-US';
 };
 
 watch(currentLanguage, (lang: 'zh-CN' | 'en-US') => {
